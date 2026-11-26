@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Connecting… · CLIPP Poster</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <h1>Finishing sign-in…</h1>
+  <p id="msg">Handing the TikTok sign-in back to CLIPP Poster on this computer.</p>
+</main>
+<script>
+  // TikTok redirects here (https). CLIPP Poster listens on this same computer; pass the sign-in result straight to it.
+  var q = window.location.search;
+  if (q.indexOf('code=') >= 0 || q.indexOf('error=') >= 0) {
+    window.location.replace('http://localhost:8765/callback' + q);
+  } else {
+    document.getElementById('msg').textContent = 'Nothing to do here. Open CLIPP Poster on your computer to connect TikTok.';
+  }
+</script>
+</body>
+</html>
